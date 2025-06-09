@@ -1,6 +1,4 @@
-// Smooth scrolling for navigation links
 document.addEventListener("DOMContentLoaded", function () {
-  // Handle navigation clicks
   const navLinks = document.querySelectorAll('a[href^="#"]');
 
   navLinks.forEach((link) => {
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Get form data
       const formData = new FormData(this);
       const name = this.querySelector('input[placeholder="nombre"]').value;
       const email = this.querySelector('input[placeholder="Email"]').value;
@@ -35,29 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
         'textarea[placeholder="mensaje"]'
       ).value;
 
-      // Basic validation
       if (!name || !email || !message) {
         alert("Por favor, completa todos los campos obligatorios.");
         return;
       }
 
-      // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         alert("Por favor, ingresa un email válido.");
         return;
       }
 
-      // Here you would typically send the data to a server
-      // For now, we'll just show a success message
       alert("¡Gracias por tu mensaje! Te contactaré pronto.");
 
-      // Reset form
       this.reset();
     });
   }
 
-  // Add active state to navigation based on scroll position
   const sections = document.querySelectorAll("section[id]");
   const navItems = document.querySelectorAll(".nav-item");
 
@@ -82,10 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Update active nav on scroll
   window.addEventListener("scroll", updateActiveNav);
 
-  // Add scroll animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -100,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, observerOptions);
 
-  // Observe elements for animation
   const animatedElements = document.querySelectorAll(
     ".service-item, .project-description, .project-image"
   );
@@ -111,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(el);
   });
 
-  // Add hover effects for buttons
   const buttons = document.querySelectorAll(".btn");
   buttons.forEach((button) => {
     button.addEventListener("mouseenter", function () {
@@ -124,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Add loading animation
 window.addEventListener("load", function () {
   document.body.style.opacity = "0";
   document.body.style.transition = "opacity 0.5s ease";
